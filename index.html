@@ -33,25 +33,27 @@
         <style>
             @keyframes redPulse {
               from { color: #ff0000; }
-              to   { color: #770000; }
+              to   { color: #330000; }
             }
 
             @keyframes greenPulse {
               from { color: #00ff00; }
-              to   { color: #007700; }
+              to   { color: #003300; }
             }
 
             @keyframes bluePulse {
               from { color: #0000ff; }
-              to   { color: #000077; }
+              to   { color: #000033; }
             }
 
             .red-led {
-                animation: redPulse 1.5s infinite alternate;
+                animation: redPulse 2s infinite alternate;
+                animation-delay: -1.33s;
             }
 
             .green-led {
-                animation: greenPulse 2.5s infinite alternate;
+                animation: greenPulse 2s infinite alternate;
+                animation-delay: -0.67s;
             }
 
             .blue-led {
@@ -284,7 +286,7 @@ node test.js
 
                 <section>
                     <h2>LEDs</h2>
-                    <h3><strong class="red-led">L</strong>ight <strong class="green-led">E</strong>mitting <strong class="blue-led">D</strong>iodes</h3>
+                    <h3><span class="red-led">Light</span> <apan class="green-led">Emitting</apan> <span class="blue-led">Diodes</span></h3>
 
                     <img src="http://blog.oscarliang.net/ctt/uploads/2011/11/5-led.jpg">
                 </section>
@@ -321,16 +323,88 @@ board.on("ready", function() {
                 </section>
 
                 <section>
-                    <h1>At this point you should see this</h1>
+                    <h3>If successful, you should see this</h3>
                 </section>
 
                 <section>
-                    <h3>You probably noticed the light blinks about every half a second</h3>
-                    <h3>Change the code to blink at a different rate and then rerun it</h3>
+                    <section>
+                        <h3>Changing the Blink Rate</h3>
+                        <ul>
+                            <li>You probably noticed the light blinks about every .5 seconds</li>
+                            <li>Change the code to blink at a different rate and then rerun it to make sure it works</li>
+                            <li>If you're stuck, press &darr; to see a potential solution</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <pre><code class="hljs" data-trim>
+var five = require("johnny-five");
+var board = new five.Board();
+
+board.on("ready", function() {
+
+  var led = new five.Led(11);
+
+  // "blink" the led in 3000ms on-off phase periods
+  led.blink(3000);
+});
+                        </code></pre>
+                        <code>node blinky.js</code>                       
+                    </section>
                 </section>
 
                 <section>
                     <h3>The REPL</h3>
+                    <ul>
+                        <li>Stands for <strong>R</strong>ead <strong>E</strong>valuate <strong>P</strong>rint <strong>L</strong>oop</li>
+                        <li>Allows us to manually run code </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Manual, live control</h3>
+                    <pre><code class="hljs" data-trim>
+var five = require("johnny-five");
+var board = new five.Board();
+
+board.on("ready", function() {
+  var led = new five.Led(11);
+
+  this.repl.inject({
+    led: led
+  });
+});
+                    </code></pre>
+                    <code>node led-boss.js</code>                       
+                </section>
+
+                <section>
+                    <h3>Type these commands in the REPL</h3>
+                    <pre><code>
+> led.on();
+
+> led.off();
+
+> led.blink();
+
+> led.stop();
+
+> led.pulse();
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>REPL Inject</h3>
+                    <p>The reason we're able to access the <code>led</code> object in the REPL is because of this bit of code in the previous example</p>
+                    <pre><code>
+this.repl.inject({
+  led: led
+});
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Breadboards?</h3>
                 </section>
 
                 <section>
@@ -342,10 +416,6 @@ board.on("ready", function() {
                       2. multiple lights
                       3. binary converter.  Represent a number in binary with an led being on representing a 1 and off   representing a 0.  User could potentially enter in a number in the REPL.
                     -->
-                </section>
-
-                <section>
-                    <h1>Breadboards?</h1>
                 </section>
 
                 <section>
