@@ -1,193 +1,311 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+    <head>
+        <meta charset="utf-8">
 
-		<title>Nodebots with NYJS</title>
+        <title>Nodebots with NYJS</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
 
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/black.css" id="theme">
 
-		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+        <!-- TODO - Move to separate CSS file.  Add vendor prefixes. -->
+        <style>
+            @keyframes redPulse {
+              from { color: #ff0000; }
+              to   { color: #770000; }
+            }
 
-	<body>
+            @keyframes greenPulse {
+              from { color: #00ff00; }
+              to   { color: #007700; }
+            }
 
-		<div class="reveal">
+            @keyframes bluePulse {
+              from { color: #0000ff; }
+              to   { color: #000077; }
+            }
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<h3>Nodebots with <a href="http://www.meetup.com/NY-JavaScript/" target="_blank">NYJS</a></h3>
-					<p>These slides: <a href="asdf" target="_blank">bitly</a></p>
-          <hr>
-					<h3>Wifi Info</h3>
-					<p>Network: </p>
-					<p>Password: </p>
-          <hr>
-					<h3>If you haven't already, install Node</h3>
-          <a href="https://nodejs.org/en/download/" target="_blank">Download Node</a>
-				</section>
+            .red-led {
+                animation: redPulse 1.5s infinite alternate;
+            }
 
-				<section>
-          <ul>
-            <li>This workshop is based heavily on a workshop by <a href="https://twitter.com/reconbot" target="_blank">Francis Gulotta</a> and <a href="https://twitter.com/rwaldron" target="_blank">Rick Waldron</a></li>
-            <li>You can find the slides for that workshop at <a href="http://gul.ly/3tjj" target="_blank">gul.ly/3tjj</a></li>
-            <li>You can also sign up for one of their workshops on the <a href="http://www.meetup.com/nodebots/" target="_blank">Nodebots Meetup page</a></li>
-          </ul>
-				</section>
+            .green-led {
+                animation: greenPulse 2.5s infinite alternate;
+            }
 
-				<section>
-					<h2>Our community guidelines</h2>
-          <a href="http://jsconf.com/codeofconduct.html" target="_blank">Be excellent to each other</a>
-				</section>
+            .blue-led {
+                animation: bluePulse 2s infinite alternate;
+            }
 
-				<section>
-					<h2>Upcoming <a href="http://www.meetup.com/NY-JavaScript/" target="_blank">NYJS</a> Events</h2>
-          <ul>
-            <li>March 15: <a href="http://www.meetup.com/NY-JavaScript/events/228332920/" target="_blank">Co-Working Day</a></li>
-            <li>March 17: <a href="http://www.meetup.com/NY-JavaScript/events/228332920/" target="_blank">Nodeschool: JS, Node, ES6</a></li>
-            <li>April 10: <a href="http://www.meetup.com/NY-JavaScript/events/228231065/" target="_blank">First-Time Open Source Contributor Workshop</a></li>
-          </ul>
-				</section>
+        </style>
 
-				<section>
-					<h2>ScriptEd</h2>
-          <ul>
-            <li>All event fees go to ScriptEd</li>
-            <li>ScriptEd teaches students in under-resourced schools to program and places their most successful students in paid summer internships in tech companies throughout NYC</li>
-            <li>To volunteer or find out more, visit <a href="https://scripted.org" target="_blank">ScriptEd.org</a></li>
-          </ul>
-				</section>
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
 
-				<section>
-					<h2>Huge thanks to our host, <a href="http://perka.com/" target="_blank">Perka</a></h2>
-				</section>
+    <body>
 
-				<section>
-					<h2>What are Nodebots?</h2>
-          <img src="https://s3.amazonaws.com/dailyjs/images/posts/nodebots.png">
-				</section>
+        <div class="reveal">
 
-				<section>
-					<h2>JavaScript + Robots = Nodebots<h2>
-				</section>
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section>
+                    <h3>Nodebots with <a href="http://www.meetup.com/NY-JavaScript/" target="_blank">NYJS</a></h3>
+                    <p>These slides: <a href="asdf" target="_blank">TODO</a></p>
+                    <hr>
+                    <h3>Wifi Info</h3>
+                    <p>Network: </p>
+                    <p>Password: </p>
+                    <hr>
+                    <h3>If you haven't already, install Node</h3>
+                    <a href="https://nodejs.org/en/download/" target="_blank">Download Node</a>
+                </section>
 
-				<section>
-					<h2>Let's get started!</h2>
-				</section>
+                <section>
+                    <ul>
+                        <li>This workshop is based heavily on a workshop by <a href="https://twitter.com/reconbot" target="_blank">Francis Gulotta</a> and <a href="https://twitter.com/rwaldron" target="_blank">Rick Waldron</a></li>
+                        <li>You can find the slides for that workshop at <a href="http://gul.ly/3tjj" target="_blank">gul.ly/3tjj</a></li>
+                        <li>You can also sign up for one of their workshops on the <a href="http://www.meetup.com/nodebots/" target="_blank">Nodebots Meetup page</a></li>
+                    </ul>
+                </section>
 
-        <section>
-          <h2>Our hardware</h2>
-          <a href="http://www.seeedstudio.com/depot/ARDX-The-starter-kit-for-Arduino-p-1153.html" target="_blank"><img src="http://www.seeedstudio.com/depot/images/product/ARDXkit.jpg"></a>
-        </section>
+                <section>
+                    <h2>Our community guidelines</h2>
+                    <a href="http://jsconf.com/codeofconduct.html" target="_blank">Be excellent to each other</a>
+                </section>
 
-        <section>
-          <h2>Our hardware</h2>
-          <a href="http://www.seeedstudio.com/depot/ARDX-The-starter-kit-for-Arduino-p-1153.html" target="_blank"><img src="http://www.seeedstudio.com/depot/images/product/ARDXkit_01.jpg"></a>
-        </section>
+                <section>
+                    <h2>Upcoming <a href="http://www.meetup.com/NY-JavaScript/" target="_blank">NYJS</a> Events</h2>
+                    <ul>
+                        <li>March 15: <a href="http://www.meetup.com/NY-JavaScript/events/228332920/" target="_blank">Co-Working Day</a></li>
+                        <li>March 17: <a href="http://www.meetup.com/NY-JavaScript/events/228332920/" target="_blank">Nodeschool: JS, Node, ES6</a></li>
+                        <li>TBD: <a href="http://www.meetup.com/NY-JavaScript/events/229153571/" target="_blank">Functional JavaScript Workshop</a></li>
+                        <li>April 10: <a href="http://www.meetup.com/NY-JavaScript/events/228231065/" target="_blank">First-Time Open Source Contributor Workshop</a></li>
+                    </ul>
+                </section>
 
-				<section>
-					<h2>Kits may be missing equipment</h2>
-          <hr>
-          <p>If you have trouble finding a component, let us know and we'll get you a replacement</p>
-				</section>
+                <section>
+                    <h2>March 12-13: <a href="https://node-react.eventbrite.com/?discount=nyjs-731BE19A" target="_blank">Node & React Workshop</a></h2>
+                    <ul>
+                        <li>An immersive workshop on Node, React, Express, and MongoDB</li>
+                        <li>The link above will give you a 5% discount</li>
+                        <li>Lead by <a href="http://azat.co/" target="_blank">Azat Mardan</a>, a friend of <a href="http://www.meetup.com/NY-JavaScript/" target="_blank">NYJS</a></li>
+                        <ul>
+                            <li>Technology Fellow at Capital One</li>
+                            <li>Creator of the <a href="https://github.com/azat-co/expressworks" target="_blank">ExpressWorks</a> and <a href="https://github.com/azat-co/meanworks" target="_blank">MEANWorks</a> Nodeschool workshops</li>
+                            <li>Written 13 books covering topics such as Node, Express, and React</li>
+                        </ul>
+                    </ul>
+                </section>
 
-				<section>
-					<h2>Not working?</h2>
-          <h2>Probably hardware!</h2>
-				</section>
+                <section>
+                    <h2>ScriptEd</h2>
+                    <ul>
+                        <li>All event fees go to ScriptEd</li>
+                        <li>ScriptEd teaches students in under-resourced schools to program and places their most successful students in paid summer internships in tech companies throughout NYC</li>
+                        <li>To volunteer or find out more, visit <a href="https://scripted.org" target="_blank">ScriptEd.org</a></li>
+                    </ul>
+                </section>
 
-				<section>
-					<h2>Components We're Covering</h2>
-          <ul>
-            <li>LEDs (Light Emitting Diodes)</li>
-            <li>Buttons</li>
-            <li>Servos</li>
-          </ul>
-				</section>
+                <section>
+                    <h2>Huge thanks to our host, <a href="http://perka.com/" target="_blank">Perka</a></h2>
+                </section>
 
-        <section>
-          <p>Feel free to select the components you like most and complete the challenges that most interest you</p>
-        </section>
+                <section>
+                    <h2>What are Nodebots?</h2>
+                    <img src="https://s3.amazonaws.com/dailyjs/images/posts/nodebots.png">
+                </section>
 
-				<section>
-					<h2>Getting started</h2>
-				</section>
+                <section>
+                    <h2>JavaScript + Robots = Nodebots<h2>
+                </section>
 
-				<section>
-					<h3>Install Node if you haven't already</h3>
-          <a href="https://nodejs.org/en/download/" target="_blank">Download Node</a>
-				</section>
+                <section>
+                    <h2>Let's get started!</h2>
+                </section>
 
-				<section>
-					<h3>Make project directory</h3>
+                <section>
+                    <h2>Our hardware</h2>
+                    <a href="http://www.seeedstudio.com/depot/ARDX-The-starter-kit-for-Arduino-p-1153.html" target="_blank"><img src="http://www.seeedstudio.com/depot/images/product/ARDXkit.jpg"></a>
+                </section>
+
+                <section>
+                    <h2>Our hardware</h2>
+                    <a href="http://www.seeedstudio.com/depot/ARDX-The-starter-kit-for-Arduino-p-1153.html" target="_blank"><img src="http://www.seeedstudio.com/depot/images/product/ARDXkit_01.jpg"></a>
+                </section>
+
+                <section>
+                    <h2>Kits may be missing equipment</h2>
+                    <hr>
+                    <p>If you have trouble finding a component, let us know and we'll get you a replacement</p>
+                </section>
+
+                <section>
+                    <h2>Not working?</h2>
+                    <h2>Probably hardware!</h2>
+                </section>
+
+                <section>
+                    <h2>Components We're Covering</h2>
+                    <ul>
+                        <li>LEDs (Light Emitting Diodes)</li>
+                        <li>Buttons</li>
+                        <li>Servos</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <p>Feel free to select the components you like most and complete the challenges that most interest you</p>
+                </section>
+
+                <section>
+                    <h2>Getting started</h2>
+                </section>
+
+                <section>
+                    <h3>Install Node if you haven't already</h3>
+                    <a href="https://nodejs.org/en/download/" target="_blank">Download Node</a>
+                </section>
+
+                <section>
+                    <h3>Make project directory</h3>
           <pre><code class="hljs nohighlight" data-trim>
 mkdir nodebots
 cd nodebots
           </code></pre>
-				</section>
+                </section>
 
-				<section>
-					<h3>Install Johnny Five</h3>
+                <section>
+                    <h3>Install Johnny Five</h3>
           <pre><code class="hljs nohighlight" data-trim>
             npm install johnny-five
           </code></pre>
-				</section>
+                </section>
 
-        <section>
-          <h3>Make sure Standard Firmata is installed on your arduino</h3>
-        </section>
+                <section>
+                    <h3>Standard Firmata</h3>
+                    <ul>
+                        <li>Allows Johnny-Five to communicate with the Arduino over USB</li>
+                        <li>Most of the Arduinos already have Standard Firmata installed from previous workshops</li>
+                        <li>Let's check to make sure your Arduino already has Standard Firmata installed!</li>
+                    </ul>
+                </section>
 
-				<section>
-          <h3>If it works, continue on!</h3>
-          <hr>
-          <h3>If not, press &darr; for instructions on flashing your Arduino with Standard Firmata</h3>
-				</section>
+                <section>
+                    <h3>Connect the arduino</h3>
+                    <img src="https://www.safaribooksonline.com/blog/wp-content/uploads/2013/07/connected-arduino-uno.jpg">
+                </section>
 
-				<section>
-					<h3>Components We're Covering</h3>
-          <ul>
-            <li style="color: yellow">LEDs (Light Emitting Diodes)</li>
-            <li>Buttons</li>
-            <li>Servos</li>
-          </ul>
-				</section>
+                <section>
+                    <h3>Create the file</h3>
+                    <ol>
+                        <li>Go to your <code>nodebots</code> directory</li>
+                        <li>Create a file called <code>test.js</code></li>
+                        <li>Copy the code below to it and save</li>
+                    </ol>
 
-				<section>
-					<h2>LEDs</h2>
-					<h3><strong style="color: red;">L</strong>ight <strong style="color: green;">E</strong>mitting <strong style="color: blue;">D</strong>iodes</h3>
-				</section>
+                    <pre><code class="hljs" data-trim>
+var five = require("johnny-five");
+var board = new five.Board();
 
-				<section>
-          <img src="https://dl.dropboxusercontent.com/u/3531958/nodebots-fundamentals-workshop/led.png" style="max-height: 70%; max-width: 70%;">
-				</section>
+board.on("ready", function() {
 
-				<section>
-          <pre><code class="hljs" data-trim>
+  var led = new five.Led(13);
+
+  led.blink(500);
+});
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Run the code</h3>
+                    <pre><code class="hljs nohighlight" data-trim>
+node test.js
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>This LED should be blinking every .5 seconds</h3>
+                    <img src="http://i.imgur.com/i5Ip6mW.png?1">
+                </section>
+
+                <section>
+                    <section>
+                        <h3>If it works, continue on! &rarr;</h3>
+                        <hr>
+                        <h3>If not, press &darr; for instructions on flashing your Arduino with Standard Firmata</h3>
+                    </section>
+
+                    <section>
+                        <h3>How to flash your Arduino with Standard Firmata (Plus)</h3>
+                        <ol>
+                            <li>Download the <a href="https://www.arduino.cc/en/main/software" target="_blank">Arduino IDE</a></li>
+                            <li>Make sure your Arduino is connected via USB</li>
+                            <li>Open the Arduino IDE</li>
+                            <li>Select: <code>File > Examples > Firmata > StandardFirmataPlus</code></li>
+                            <li>Select: <code>Tools > Board > Arduino/Genuino Uno</code></li>
+                            <li>Select: <code>Tools > Port > &lt;your Arduino&gt;</code></li>
+                            <li>Click the Upload Button <img style="margin: 0;" src="http://i.imgur.com/a33l6OW.png?1"></li>
+                            <li>Retry making that LED blink</li>
+                        </ol>
+                    </section>
+                </section>
+
+                <section>
+                    <h3>Components We're Covering</h3>
+                    <ul>
+                        <li style="color: yellow">LEDs (Light Emitting Diodes)</li>
+                        <li>Buttons</li>
+                        <li>Servos</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>LEDs</h2>
+                    <h3><strong class="red-led">L</strong>ight <strong class="green-led">E</strong>mitting <strong class="blue-led">D</strong>iodes</h3>
+
+                    <img src="http://blog.oscarliang.net/ctt/uploads/2011/11/5-led.jpg">
+                </section>
+
+                <section>
+                    <h3>Identifying LED Pins</h3>
+                    <ul>
+                        <li>Long pin is positive (and goes to power)</li>
+                        <li>Short pin is negative (and goes to ground)</li>
+                    </ul>
+                    <img src="https://cdn.sparkfun.com/assets/0/c/5/d/a/518d2d78ce395f2675000000.png">
+                </section>
+
+                <section>
+                    <h3>Build This</h3>
+                    <img src="https://dl.dropboxusercontent.com/u/3531958/nodebots-fundamentals-workshop/led.png" style="max-height: 60%; max-width: 60%;">
+                </section>
+
+                <section>
+                    <h3>Save this to a file and run it</h3>
+                    <pre><code class="hljs" data-trim>
 var five = require("johnny-five");
 var board = new five.Board();
 
@@ -198,122 +316,119 @@ board.on("ready", function() {
   // "blink" the led in 500ms on-off phase periods
   led.blink(500);
 });
-          </code></pre>
-				</section>
+                    </code></pre>
+                    <code>node blinky.js</code>
+                </section>
 
-				<section>
-					<h1>Running code</h1>
-				</section>
+                <section>
+                    <h1>At this point you should see this</h1>
+                </section>
 
-				<section>
-					<h1>At this point you should see this</h1>
-				</section>
+                <section>
+                    <h3>You probably noticed the light blinks about every half a second</h3>
+                    <h3>Change the code to blink at a different rate and then rerun it</h3>
+                </section>
 
-				<section>
-					<h3>You probably noticed the light blinks about every half a second</h3>
-					<h3>Change the code to blink at a different rate and then rerun it</h3>
-				</section>
+                <section>
+                    <h3>The REPL</h3>
+                </section>
 
-				<section>
-					<h3>The REPL</h3>
-				</section>
+                <section>
+                    <h1>LED Challenges</h1>
+                    <p>Press &darr; to scroll through the LED challenges</p>
 
-				<section>
-					<h1>LED Challenges</h1>
-          <p>Press &darr; to scroll through the LED challenges</p>
+                    <!--
+                      1. xmas lights
+                      2. multiple lights
+                      3. binary converter.  Represent a number in binary with an led being on representing a 1 and off   representing a 0.  User could potentially enter in a number in the REPL.
+                    -->
+                </section>
 
-          <!--
-            1. xmas lights
-            2. multiple lights
-            3. binary converter.  Represent a number in binary with an led being on representing a 1 and off representing a 0.  User could potentially enter in a number in the REPL.
-          -->
-				</section>
+                <section>
+                    <h1>Breadboards?</h1>
+                </section>
 
-				<section>
-					<h1>Breadboards?</h1>
-				</section>
+                <section>
+                    <h3>Components We're Covering</h3>
+                    <ul>
+                        <li>LEDs (Light Emitting Diodes)</li>
+                        <li style="color: yellow">Buttons</li>
+                        <li>Servos</li>
+                    </ul>
+                </section>
 
-				<section>
-					<h3>Components We're Covering</h3>
-          <ul>
-            <li>LEDs (Light Emitting Diodes)</li>
-            <li style="color: yellow">Buttons</li>
-            <li>Servos</li>
-          </ul>
-				</section>
+                <section>
+                    <h1>Buttons</h1>
+                </section>
 
-				<section>
-					<h1>Buttons</h1>
-				</section>
+                <section>
+                    <h1>Button Challenges</h1>
+                    <ul>
+                        <li>Press the down button if you'd like to try some optional button challenges</li>
+                        <li>Alternatively, you could go on to the next component</li>
+                    </ul>
+                </section>
 
-				<section>
-					<h1>Button Challenges</h1>
-					<ul>
-            <li>Press the down button if you'd like to try some optional button challenges</li>
-            <li>Alternatively, you could go on to the next component</li>
-          </ul>
-				</section>
+                <section>
+                    <h3>Components We're Covering</h3>
+                    <ul>
+                        <li>LEDs (Light Emitting Diodes)</li>
+                        <li>Buttons</li>
+                        <li style="color: yellow">Servos</li>
+                    </ul>
+                </section>
 
-				<section>
-					<h3>Components We're Covering</h3>
-          <ul>
-            <li>LEDs (Light Emitting Diodes)</li>
-            <li>Buttons</li>
-            <li style="color: yellow">Servos</li>
-          </ul>
-				</section>
+                <section>
+                    <h1>Servos</h1>
+                </section>
 
-				<section>
-					<h1>Servos</h1>
-				</section>
+                <section>
+                    <h1>Servo Challenges</h1>
+                    <ul>
+                        <li>Challenge 1</li>
+                        <li>Challenge 2</li>
+                    </ul>
+                </section>
 
-				<section>
-					<h1>Servo Challenges</h1>
-					<ul>
-            <li>Challenge 1</li>
-            <li>Challenge 2</li>
-          </ul>
-				</section>
+                <section>
+                    <h1>Wrapping Up</h1>
+                    <ul>
+                        <li>Let us know what you think: <a href="asdf" target="_blank">I go nowhere</a></li>
+                        <li>Put away kits (you can buy your own <a href="http://www.seeedstudio.com/depot/ARDX-The-starter-kit-for-Arduino-p-1153.html" target="_blank">here</a>)</li>
+                    </ul>
+                </section>
 
-				<section>
-					<h1>Wrapping Up</h1>
-					<ul>
-            <li>Let us know what you think here: <a href="asdf" target="_blank">I go nowhere</a></li>
-            <li>Put away kits</li>
-          </ul>
-				</section>
+            </div>
 
-			</div>
+        </div>
 
-		</div>
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+        <script>
 
-		<script>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
 
-			// Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true },
+                    { src: 'plugin/notes/notes.js', async: true }
+                ]
+            });
 
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
+        </script>
 
-		</script>
-
-	</body>
+    </body>
 </html>
