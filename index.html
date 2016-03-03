@@ -75,7 +75,7 @@
             <div class="slides">
                 <section>
                     <h3>Nodebots with <a href="http://www.meetup.com/NY-JavaScript/" target="_blank">NYJS</a></h3>
-                    <p>These slides: <a href="asdf" target="_blank">TODO</a></p>
+                    <p>These slides: <a href="http://bit.ly/nyjs-nodebots" target="_blank">bit.ly/nyjs-nodebots</a></p>
                     <hr>
                     <h3>Wifi Info</h3>
                     <p>Network: </p>
@@ -886,10 +886,11 @@ board.on("ready", function() {
                 <section>
                     <h3>Type these commands in the REPL and watch how the servo reacts</h3>
                     <pre><code>
-
 > servo.to(10);   // Move to 10 degrees
 
 > servo.to(200);  // Move to 200 degrees
+
+> servo.value;    // Get current position
 
 > servo.min();
 
@@ -904,18 +905,67 @@ board.on("ready", function() {
                 </section>
 
                 <section>
-                    <h1>Servo Challenges</h1>
-                    <ul>
-                        <li>Challenge 1</li>
-                        <li>Challenge 2</li>
-                    </ul>
+                   <section>
+                        <h3>Servo Challenges</h3>
+                        <p>Now that you've got the basics of servos, you can either move on to the next component, or work on some servo challenges</p>
+                        <ul>
+                            <li>Press &rarr; to move on to the next component</li>
+                            <li>Press &darr; to scroll through the servo challenges</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Servo Challenges</h3>
+
+                        <p><em><strong>Try to solve them yourself before looking at the solution!</strong></em></p>
+                        <p>Press &darr; to scroll through the following challenges (and potential solutions)</p>
+
+                        <ol style="white-space: nowrap;">
+                            <li>Button</li>
+                        </ol>
+                    </section>
+
+                    <section>
+                        <h3>1. Button</h3>
+                        <p>Have the servo sweep while a button is held down</p>
+                    </section>
+
+                    <section>
+                        <p>Potential Button Solution - Hardware</p>
+                        <img src="http://i.imgur.com/HP85BUO.png">
+                    </section>
+
+                    <section>
+                        <p>Potential Button Solution - Code</p>
+                        <pre><code class="hljs" data-trim style="max-height: none;">
+var five = require("johnny-five");
+var board = new five.Board();
+
+board.on("ready", function() {
+  var servo = new five.Servo(11);
+  var button = new five.Button(2);
+
+  button.on("press", function() {
+    servo.sweep();
+  });
+
+  button.on("release", function() {
+    servo.stop();
+  });
+});
+                        </code></pre>
+                    </section>
                 </section>
 
                 <section>
-                    <h1>Wrapping Up</h1>
+                    <p>Uh oh!  We ran out of slides!  Feel free to try out some of the other components in your kit while we add more!</p>
+                </section>
+
+                <section>
+                    <h3>Wrapping Up</h3>
                     <ul>
-                        <li>Let us know what you think: <a href="asdf" target="_blank">I go nowhere</a></li>
-                        <li>Put away kits (you can buy your own <a href="http://www.seeedstudio.com/depot/ARDX-The-starter-kit-for-Arduino-p-1153.html" target="_blank">here</a>)</li>
+                        <li>Thank you for coming!</li>
+                        <li>Please put away kits (you can buy your own <a href="http://www.seeedstudio.com/depot/ARDX-The-starter-kit-for-Arduino-p-1153.html" target="_blank">here</a>)</li>
                     </ul>
                 </section>
 
