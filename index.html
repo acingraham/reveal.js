@@ -103,7 +103,7 @@
                     <ul>
                         <li>March 15: <a href="http://www.meetup.com/NY-JavaScript/events/228332920/" target="_blank">Co-Working Day</a></li>
                         <li>March 17: <a href="http://www.meetup.com/NY-JavaScript/events/228332920/" target="_blank">Nodeschool: JS, Node, ES6</a></li>
-                        <li>TBD: <a href="http://www.meetup.com/NY-JavaScript/events/229153571/" target="_blank">Functional JavaScript Workshop</a></li>
+                        <li>March 22: <a href="http://www.meetup.com/NY-JavaScript/events/229237382/" target="_blank">JavaScript Workshop: Functional Programming</a></li>
                         <li>April 10: <a href="http://www.meetup.com/NY-JavaScript/events/228231065/" target="_blank">First-Time Open Source Contributor Workshop</a></li>
                     </ul>
                 </section>
@@ -324,6 +324,7 @@ board.on("ready", function() {
 
                 <section>
                     <h3>If successful, you should see this</h3>
+                    <img src="http://i.imgur.com/qHCkDM3.gif">
                 </section>
 
                 <section>
@@ -357,12 +358,12 @@ board.on("ready", function() {
                     <h3>The REPL</h3>
                     <ul>
                         <li>Stands for <strong>R</strong>ead <strong>E</strong>valuate <strong>P</strong>rint <strong>L</strong>oop</li>
-                        <li>Allows us to manually run code </li>
+                        <li>Allows us to type code in our terminal and see it affect our robots</li>
                     </ul>
                 </section>
 
                 <section>
-                    <h3>Manual, live control</h3>
+                    <h3>Write and run this.  Then, go on to the next slide.</h3>
                     <pre><code class="hljs" data-trim>
 var five = require("johnny-five");
 var board = new five.Board();
@@ -379,7 +380,7 @@ board.on("ready", function() {
                 </section>
 
                 <section>
-                    <h3>Type these commands in the REPL</h3>
+                    <h3>Type these commands in the REPL and watch how the LED changes</h3>
                     <pre><code>
 > led.on();
 
@@ -395,7 +396,7 @@ board.on("ready", function() {
 
                 <section>
                     <h3>REPL Inject</h3>
-                    <p>The reason we're able to access the <code>led</code> object in the REPL is because of this bit of code in the previous example</p>
+                    <p>The reason we're able to access the <code>led</code> object in the REPL is because of this bit of code in the previous example.  It exposes the led object to our REPL session.</p>
                     <pre><code>
 this.repl.inject({
   led: led
@@ -404,18 +405,229 @@ this.repl.inject({
                 </section>
 
                 <section>
-                    <h3>Breadboards?</h3>
+                    <h3>Breadboards: Solderless wiring</h3>
+                    <p>Breadboards allow us to quickly wire components together for prototyping</p>
+                    <img src="https://dl.dropboxusercontent.com/u/3531958/nodebots-fundamentals-workshop/kit-001.jpg" style="max-height: 60%; max-width: 60%;">
                 </section>
 
                 <section>
-                    <h1>LED Challenges</h1>
-                    <p>Press &darr; to scroll through the LED challenges</p>
+                    <h3>Breadboards: Electrical Connections</h3>
+                    <ul><li>Here you can see how the different rows and columns are connected.</li><li>If this is unclear, don't hesitate to do some Googling or ask a volunteer to explain them further.</li></ul>
+                    <img src="https://dl.dropboxusercontent.com/u/3531958/nodebots-fundamentals-workshop/breadboard-conections.jpg" style="max-height: 60%; max-width: 60%;">
+                </section>
 
-                    <!--
-                      1. xmas lights
-                      2. multiple lights
-                      3. binary converter.  Represent a number in binary with an led being on representing a 1 and off   representing a 0.  User could potentially enter in a number in the REPL.
-                    -->
+                <section>
+                    <h3>Use your breadboard and a couple of wires (color doesn't matter) to build this</h3>
+                    <img src="http://i.imgur.com/as9CuSD.png" style="max-height: 35%; max-width: 35%;">
+                </section>
+
+                <section>
+                    <p>Now run one of your programs from before and make sure the LED still blinks</p>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>LED Challenges</h3>
+                        <p>Now that you've got the basics of LEDs, you can either move on to the next component, or work on some LED challenges</p>
+                        <ul>
+                            <li>Press &rarr; to move on to the next component</li>
+                            <li>Press &darr; to scroll through the LED challenges</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>LED Challenges</h3>
+
+                        <p><em><strong>Try to solve them yourself before looking at the solution!</strong></em></p>
+                        <p>Press &darr; to scroll through the following challenges (and potential solutions)</p>
+
+                        <ol style="white-space: nowrap;">
+                            <li>Multiple Lights</li>
+                            <li>Holiday Lights</li>
+                            <li>Binary Counter</li>
+                        </ol>
+                    </section>
+
+                    <section>
+                        <h3>1. Multiple Lights</h3>
+                        <p>Have 2 (or more) lights alternate blinking</p>
+                    </section>
+
+                   <section>
+                        <p>Potential Multiple Lights Solution - Hardware</p>
+                        <img src="http://i.imgur.com/6kkthtS.png" style="max-height: 35%; max-width: 35%;">
+                    </section>
+
+                    <section>
+                        <p>Potential Multiple Lights Solution - Code</p>
+                        <pre><code class="hljs" data-trim style="max-height: none;">
+var five = require("johnny-five");
+var board = new five.Board();
+
+board.on("ready", function() {
+
+  var led1 = new five.Led(10);
+  var led2 = new five.Led(11);
+  var flag = false;
+
+  setInterval(function() {
+    if (flag) {
+      led1.on();
+      led2.off();
+    } else {
+      led1.off();
+      led2.on();
+    }
+
+    flag = !flag;
+  }, 500);
+});
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>2. Holiday Lights</h3>
+                        <p>Make an LED (or multiple LEDs) go through different settings like some holiday lights do.  It should change the setting every few seconds.  Below are some example settings.</p>
+                        <ul>
+                            <li>Off</li>
+                            <li>Solid</li>
+                            <li>Blinking</li>
+                            <li>Pulsing (fading in and out)</li>
+                            <li>Different speeds of blinking, pulsing, or alternating</li>
+                            <li>Alternating which lights are on</li>
+                        </ul>
+                    </section>
+
+                   <section>
+                        <p>Potential Holiday Lights Solution - Hardware</p>
+                        <img src="http://i.imgur.com/as9CuSD.png" style="max-height: 35%; max-width: 35%;">
+                    </section>
+
+                    <section>
+                        <p>Potential Holiday Lights Solution - Code</p>
+                        <pre><code class="hljs" data-trim style="max-height: none;">
+var five = require("johnny-five");
+var board = new five.Board();
+
+board.on("ready", function() {
+  var led = new five.Led(11);
+  var setting = 0;
+
+  setInterval(function() {
+    led.stop();  // If we call pulse, we need to stop it
+    switch (setting) {
+      case 0:
+        led.pulse();
+        break;
+      case 1:
+        led.off();
+        break;
+      case 2:
+        led.on();
+        break;
+    }
+    setting = (setting + 1) % 3;
+  }, 3000);
+});
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>2. Holiday Lights (Bonuses)</h3>
+                        <ol>
+                            <li>Expose a function to the REPL that allows you to switch to the next setting from the REPL</li>
+                            <li>Add a button that when pressed will go to the next setting (NOTE: you should complete the Button Component slides before attempting this)</li>
+                        </ol>
+                    </section>
+
+                    <section>
+                        <p>Potential Holiday Lights Bonus 1 Solution - Hardware</p>
+                        <img src="http://i.imgur.com/as9CuSD.png" style="max-height: 35%; max-width: 35%;">
+                    </section>
+
+                    <section>
+                        <p>Potential Holiday Lights Bonus 1 Solution - Code</p>
+                        <pre><code class="hljs" data-trim style="max-height: none; line-height: 21px;">
+var five = require("johnny-five");
+var board = new five.Board();
+
+board.on("ready", function() {
+  var led = new five.Led(11);
+  var setting = 0;
+
+  function changeSetting() {
+    led.stop();  // If we call pulse, we need to stop it
+    switch (setting) {
+      case 0:
+        led.pulse();
+        break;
+      case 1:
+        led.off();
+        break;
+      case 2:
+        led.on();
+        break;
+    }
+    setting = (setting + 1) % 3;
+  }
+
+  this.repl.inject({
+    cs: changeSetting  // Now we can call cs() from the REPL
+  });
+});
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Potential Holiday Lights Bonus 2 Solution</p>
+                        <p>You're on your own for this one!</p>
+                    </section>
+
+                    <section>
+                        <h3>3. Binary Counter</h3>
+                        <p>Using 3 LEDs, count from 0 to 7 in binary as shown below. On represents 1 and off repesents 0.</p>
+                        <img src="http://i.imgur.com/PZtSUFl.gif">
+                    </section>
+
+                    <section>
+                        <p>Potential Binary Counter Solution - Hardware</p>
+                        <img src="http://i.imgur.com/9WOmXnD.png" style="max-height: 35%; max-width: 35%;">
+                    </section>
+
+                    <section>
+                        <p>Potential Binary Counter Solution - Code</p>
+                        <pre><code class="hljs" data-trim style="max-height: none;">
+var five = require("johnny-five");
+var board = new five.Board();
+
+board.on("ready", function() {
+  var led1 = new five.Led(9);
+  var led2 = new five.Led(10);
+  var led3 = new five.Led(11);
+  var num = 0;
+
+  setInterval(function() {
+    var binary = (num).toString(2);
+
+    binary.slice(-1)     === "1" ? led1.on() : led1.off();
+    binary.slice(-2, -1) === "1" ? led2.on() : led2.off();
+    binary.slice(-3, -2) === "1" ? led3.on() : led3.off();
+
+    num = (num + 1) % 8;
+  }, 1000);
+});
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>3. Binary Counter (Bonus)</h3>
+                        <p>Allow the user to enter a number through the REPL and display it in binary on the LEDs</p>
+                    </section>
+
+                    <section>
+                        <p>Potential Binary Counter Bonus Solution</p>
+                        <p>You're on your own for this one!</p>
+                    </section>
                 </section>
 
                 <section>
@@ -428,15 +640,205 @@ this.repl.inject({
                 </section>
 
                 <section>
-                    <h1>Buttons</h1>
+                    <h3>Buttons</h3>
+                    <img src="http://robosavvy.com/store/images/sparkfun/CIRC-07b_clone_clone_clone_clone_clone_clone.jpg" style="max-width: 60%; max-height: 60%;">
                 </section>
 
                 <section>
-                    <h1>Button Challenges</h1>
-                    <ul>
-                        <li>Press the down button if you'd like to try some optional button challenges</li>
-                        <li>Alternatively, you could go on to the next component</li>
-                    </ul>
+                    <h3>Build This</h3>
+                    <img src="http://i.imgur.com/Ol9Wjaq.png">
+                </section>
+
+                <section>
+                    <h3>Save this to a file and run it</h3>
+                    <pre><code class="hljs" data-trim style="max-height: none;">
+var five = require("johnny-five");
+var board = new five.Board();
+
+board.on("ready", function() {
+  var button = new five.Button(2);
+
+  button.on("press", function() {
+    console.log("Button Pressed!");
+  });
+
+  button.on("hold", function() {
+    console.log("Button Held!");
+  });
+
+  button.on("release", function() {
+    console.log("Button Released!");
+  });
+});
+                    </code></pre>
+                    <code>node button.js</code>
+                </section>
+
+                <section>
+                    <p>Try pressing, releasing, and holding the button</p>
+                    <p>You should see some output like this in the REPL</p>
+                    <pre><code>
+>> Button Pressed!
+Button Released!
+Button Pressed!
+Button Released!
+Button Pressed!
+Button Held!
+Button Held!
+Button Released!
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Let's add an LED!</h3>
+                    <img src="http://i.imgur.com/wfY99m0.png">
+                </section>
+
+                <section>
+                    <h3>Save this to a file and run it</h3>
+                    <pre><code class="hljs" data-trim style="max-height: none;">
+var five = require("johnny-five");
+var board = new five.Board();
+
+board.on("ready", function() {
+  var led = new five.Led(11);
+  var button = new five.Button(2);
+
+  button.on("press", function() {
+    led.on();
+  });
+
+  button.on("hold", function() {
+    led.blink(50);
+  });
+
+  button.on("release", function() {
+    led.stop().off();
+  });
+});
+                    </code></pre>
+                    <code>node button_led.js</code>
+                </section>
+
+                <section>
+                    <p>The LED should go on when you press, off when you release, and blink when you hold</p>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Button Challenges</h3>
+                        <p>Now that you've got the basics of buttons, you can either move on to the next component, or work on some button challenges</p>
+                        <ul>
+                            <li>Press &rarr; to move on to the next component</li>
+                            <li>Press &darr; to scroll through the button challenges</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Button Challenges</h3>
+
+                        <p><em><strong>Try to solve them yourself before looking at the solution!</strong></em></p>
+                        <p>Press &darr; to scroll through the following challenges (and potential solutions)</p>
+
+                        <ol style="white-space: nowrap;">
+                            <li>Light Switch</li>
+                            <li>Passcode</li>
+                            <li>Holiday Lights</li>
+                        </ol>
+                    </section>
+
+                    <section>
+                        <h3>1. Light Switch</h3>
+                        <p>Have pressing a button alternate turning an LED on and off</p>
+                    </section>
+
+                    <section>
+                        <p>Potential Light Switch Solution - Hardware</p>
+                        <img src="http://i.imgur.com/wfY99m0.png">
+                    </section>
+
+                    <section>
+                        <p>Potential Light Switch Solution - Code</p>
+                        <pre><code class="hljs" data-trim style="max-height: none;">
+var five = require("johnny-five");
+var board = new five.Board();
+
+board.on("ready", function() {
+  var led = new five.Led(11);
+  var button = new five.Button(2);
+  var on = false;
+
+  button.on("press", function() {
+    if (on) {
+      led.off();
+    } else {
+      led.on();
+    }
+
+    on = !on;
+  });
+});
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>2. Passcode</h3>
+                        <p>Have 2 buttons and 1 LED.  Make it so you have to press the buttons in a certain order to turn the LED on.</p>
+                    </section>
+
+                    <section>
+                        <p>Potential Passcode Solution - Hardware</p>
+                        <img src="http://i.imgur.com/EdV4s19.png">
+                    </section>
+
+                    <section>
+                        <p>Potential Passcode Solution - Code</p>
+                        <pre><code class="hljs" data-trim style="max-height: none; line-height: 21px;">
+var five = require("johnny-five");
+var board = new five.Board();
+
+board.on("ready", function() {
+  var led = new five.Led(11);
+  var button1 = new five.Button(2);
+  var button2 = new five.Button(4);
+
+  var passcode = "12112";
+  var presses = "";
+
+  button1.on("press", function() {
+    presses += "1";
+    if (presses.indexOf(passcode) > -1) {
+      led.on();
+    }
+  });
+
+  button2.on("press", function() {
+    presses += "2";
+    if (presses.indexOf(passcode) > -1) {
+      led.on();
+    }
+  });
+});
+                        </code></pre>
+                    </section>
+
+                   <section>
+                        <h3>3. Holiday Lights</h3>
+                        <p>Make an LED (or multiple LEDs) go through different settings like some holiday lights do.  It should change the setting every time the button is pressed.  Below are some example settings.</p>
+                        <ul>
+                            <li>Off</li>
+                            <li>Solid</li>
+                            <li>Blinking</li>
+                            <li>Pulsing (fading in and out)</li>
+                            <li>Different speeds of blinking, pulsing, or alternating</li>
+                            <li>Alternating which lights are on</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <p>Potential Holiday Lights Solution</p>
+                        <p>You're on your own for this one!</p>
+                    </section>
                 </section>
 
                 <section>
@@ -449,7 +851,56 @@ this.repl.inject({
                 </section>
 
                 <section>
-                    <h1>Servos</h1>
+                    <h3>Servos</h3>
+                    <img src="http://www.seeedstudio.com/depot/images/product/GroveServo.jpg">
+                </section>
+
+                <section>
+                    <p>Take your servo and add one of the attachments to it</p>
+                    <img src="http://www.seeedstudio.com/depot/images/product/GroveServo.jpg">
+                </section>
+
+                <section>
+                    <h3>Build This</h3>
+                    <img src="http://i.imgur.com/Yg1y4nL.png" style="max-height: 75%; max-width: 75%;">
+                </section>
+
+                <section>
+                    <h3>Save this to a file and run it</h3>
+                    <pre><code class="hljs" data-trim style="max-height: none;">
+var five = require("johnny-five");
+var board = new five.Board();
+
+board.on("ready", function() {
+
+  var servo = new five.Servo(11);
+
+  this.repl.inject({
+    servo: servo
+  });
+});
+                    </code></pre>
+                    <code>node servo.js</code>
+                </section>
+
+                <section>
+                    <h3>Type these commands in the REPL and watch how the servo reacts</h3>
+                    <pre><code>
+
+> servo.to(10);   // Move to 10 degrees
+
+> servo.to(200);  // Move to 200 degrees
+
+> servo.min();
+
+> servo.max();
+
+> servo.center();
+
+> servo.sweep();
+
+> servo.stop();
+                    </code></pre>
                 </section>
 
                 <section>
