@@ -60,6 +60,15 @@
                 animation: bluePulse 2s infinite alternate;
             }
 
+            @keyframes spin-animation {
+                from { transform: rotate(0deg); }
+                to   { transform: rotate(360deg); }
+            }
+
+            .spin {
+               display: inline-block;
+               animation: spin-animation 4s linear infinite;
+            }
         </style>
 
         <!--[if lt IE 9]>
@@ -78,8 +87,8 @@
                     <p>These slides: <a href="http://bit.ly/nyjs-nodebots" target="_blank">bit.ly/nyjs-nodebots</a></p>
                     <hr>
                     <h3>Wifi Info</h3>
-                    <p>Network: </p>
-                    <p>Password: </p>
+                    <p>Network: Perka Guests</p>
+                    <p>Password: Perka_456$</p>
                     <hr>
                     <h3>If you haven't already, install Node</h3>
                     <a href="https://nodejs.org/en/download/" target="_blank">Download Node</a>
@@ -137,7 +146,7 @@
 
                 <section>
                     <h2>What are Nodebots?</h2>
-                    <img src="https://s3.amazonaws.com/dailyjs/images/posts/nodebots.png">
+                    <img src="img/johnny-five.png">
                 </section>
 
                 <section>
@@ -150,12 +159,12 @@
 
                 <section>
                     <h2>Our hardware</h2>
-                    <a href="http://www.seeedstudio.com/depot/ARDX-The-starter-kit-for-Arduino-p-1153.html" target="_blank"><img src="http://www.seeedstudio.com/depot/images/product/ARDXkit.jpg"></a>
+                    <a href="http://www.seeedstudio.com/depot/ARDX-The-starter-kit-for-Arduino-p-1153.html" target="_blank"><img src="img/hardware-kit-closed.jpg"></a>
                 </section>
 
                 <section>
                     <h2>Our hardware</h2>
-                    <a href="http://www.seeedstudio.com/depot/ARDX-The-starter-kit-for-Arduino-p-1153.html" target="_blank"><img src="http://www.seeedstudio.com/depot/images/product/ARDXkit_01.jpg"></a>
+                    <a href="http://www.seeedstudio.com/depot/ARDX-The-starter-kit-for-Arduino-p-1153.html" target="_blank"><img src="img/hardware-kit-open.jpg"></a>
                 </section>
 
                 <section>
@@ -217,7 +226,7 @@ cd nodebots
 
                 <section>
                     <h3>Connect the arduino</h3>
-                    <img src="https://www.safaribooksonline.com/blog/wp-content/uploads/2013/07/connected-arduino-uno.jpg">
+                    <img src="img/connecting-arduino.jpg">
                 </section>
 
                 <section>
@@ -250,7 +259,7 @@ node test.js
 
                 <section>
                     <h3>This LED should be blinking every .5 seconds</h3>
-                    <img src="http://i.imgur.com/i5Ip6mW.png?1">
+                    <img src="img/built-in-led.png">
                 </section>
 
                 <section>
@@ -269,7 +278,7 @@ node test.js
                             <li>Select: <code>File > Examples > Firmata > StandardFirmataPlus</code></li>
                             <li>Select: <code>Tools > Board > Arduino/Genuino Uno</code></li>
                             <li>Select: <code>Tools > Port > &lt;your Arduino&gt;</code></li>
-                            <li>Click the Upload Button <img style="margin: 0;" src="http://i.imgur.com/a33l6OW.png?1"></li>
+                            <li>Click the Upload Button <img style="margin: 0;" src="img/arduino-ide-upload-button.png"></li>
                             <li>Retry making that LED blink</li>
                         </ol>
                     </section>
@@ -288,7 +297,7 @@ node test.js
                     <h2>LEDs</h2>
                     <h3><span class="red-led">Light</span> <apan class="green-led">Emitting</apan> <span class="blue-led">Diodes</span></h3>
 
-                    <img src="http://blog.oscarliang.net/ctt/uploads/2011/11/5-led.jpg">
+                    <img src="img/leds.jpg">
                 </section>
 
                 <section>
@@ -297,12 +306,12 @@ node test.js
                         <li>Long pin is positive (and goes to power)</li>
                         <li>Short pin is negative (and goes to ground)</li>
                     </ul>
-                    <img src="https://cdn.sparkfun.com/assets/0/c/5/d/a/518d2d78ce395f2675000000.png">
+                    <img src="img/led-pin-diagram.png">
                 </section>
 
                 <section>
                     <h3>Build This</h3>
-                    <img src="https://dl.dropboxusercontent.com/u/3531958/nodebots-fundamentals-workshop/led.png" style="max-height: 60%; max-width: 60%;">
+                    <img src="img/arduino-led.png" style="max-height: 60%; max-width: 60%;">
                 </section>
 
                 <section>
@@ -324,7 +333,7 @@ board.on("ready", function() {
 
                 <section>
                     <h3>If successful, you should see this</h3>
-                    <img src="http://i.imgur.com/qHCkDM3.gif">
+                    <img src="img/blinking-led.gif">
                 </section>
 
                 <section>
@@ -407,18 +416,18 @@ this.repl.inject({
                 <section>
                     <h3>Breadboards: Solderless wiring</h3>
                     <p>Breadboards allow us to quickly wire components together for prototyping</p>
-                    <img src="https://dl.dropboxusercontent.com/u/3531958/nodebots-fundamentals-workshop/kit-001.jpg" style="max-height: 60%; max-width: 60%;">
+                    <img src="img/breadboard.jpg" style="max-height: 60%; max-width: 60%;">
                 </section>
 
                 <section>
                     <h3>Breadboards: Electrical Connections</h3>
                     <ul><li>Here you can see how the different rows and columns are connected.</li><li>If this is unclear, don't hesitate to do some Googling or ask a volunteer to explain them further.</li></ul>
-                    <img src="https://dl.dropboxusercontent.com/u/3531958/nodebots-fundamentals-workshop/breadboard-conections.jpg" style="max-height: 60%; max-width: 60%;">
+                    <img src="img/breadboard-diagram.jpg" style="max-height: 60%; max-width: 60%;">
                 </section>
 
                 <section>
                     <h3>Use your breadboard and a couple of wires (color doesn't matter) to build this</h3>
-                    <img src="http://i.imgur.com/as9CuSD.png" style="max-height: 35%; max-width: 35%;">
+                    <img src="img/arduino-led-breadboard.png" style="max-height: 60%; max-width: 60%;">
                 </section>
 
                 <section>
@@ -451,11 +460,12 @@ this.repl.inject({
                     <section>
                         <h3>1. Multiple Lights</h3>
                         <p>Have 2 (or more) lights alternate blinking</p>
+                        <img src="img/alternate-blinking.gif">
                     </section>
 
                    <section>
                         <p>Potential Multiple Lights Solution - Hardware</p>
-                        <img src="http://i.imgur.com/6kkthtS.png" style="max-height: 35%; max-width: 35%;">
+                        <img src="img/alternate-blinking-hardware.png" style="max-height: 80%; max-width: 80%;">
                     </section>
 
                     <section>
@@ -487,7 +497,7 @@ board.on("ready", function() {
 
                     <section>
                         <h3>2. Holiday Lights</h3>
-                        <p>Make an LED (or multiple LEDs) go through different settings like some holiday lights do.  It should change the setting every few seconds.  Below are some example settings.</p>
+                        <p>Make an LED (or multiple LEDs) go through different settings like some holiday lights do.  It should change the setting every few seconds.  Below are some example settings.  You can see an example on the next slide.</p>
                         <ul>
                             <li>Off</li>
                             <li>Solid</li>
@@ -498,9 +508,14 @@ board.on("ready", function() {
                         </ul>
                     </section>
 
+                    <section>
+                        <h3>2. Holiday Lights</h3>
+                        <img src="img/holiday-lights.gif">
+                    </section>
+
                    <section>
                         <p>Potential Holiday Lights Solution - Hardware</p>
-                        <img src="http://i.imgur.com/as9CuSD.png" style="max-height: 35%; max-width: 35%;">
+                        <img src="img/holiday-lights-hardware.gif" style="max-height: 80%; max-width: 80%;">
                     </section>
 
                     <section>
@@ -542,7 +557,7 @@ board.on("ready", function() {
 
                     <section>
                         <p>Potential Holiday Lights Bonus 1 Solution - Hardware</p>
-                        <img src="http://i.imgur.com/as9CuSD.png" style="max-height: 35%; max-width: 35%;">
+                        <img src="img/holiday-lights-hardware.gif" style="max-height: 80%; max-width: 80%;">
                     </section>
 
                     <section>
@@ -586,12 +601,12 @@ board.on("ready", function() {
                     <section>
                         <h3>3. Binary Counter</h3>
                         <p>Using 3 LEDs, count from 0 to 7 in binary as shown below. On represents 1 and off repesents 0.</p>
-                        <img src="http://i.imgur.com/PZtSUFl.gif">
+                        <img src="img/binary-counter.gif">
                     </section>
 
                     <section>
                         <p>Potential Binary Counter Solution - Hardware</p>
-                        <img src="http://i.imgur.com/9WOmXnD.png" style="max-height: 35%; max-width: 35%;">
+                        <img src="img/binary-counter-hardware.png" style="max-height: 80%; max-width: 80%;">
                     </section>
 
                     <section>
@@ -641,12 +656,12 @@ board.on("ready", function() {
 
                 <section>
                     <h3>Buttons</h3>
-                    <img src="http://robosavvy.com/store/images/sparkfun/CIRC-07b_clone_clone_clone_clone_clone_clone.jpg" style="max-width: 60%; max-height: 60%;">
+                    <img src="img/buttons.jpg" style="max-width: 60%; max-height: 60%;">
                 </section>
 
                 <section>
                     <h3>Build This</h3>
-                    <img src="http://i.imgur.com/Ol9Wjaq.png">
+                    <img src="img/button-hardware.png">
                 </section>
 
                 <section>
@@ -691,7 +706,7 @@ Button Released!
 
                 <section>
                     <h3>Let's add an LED!</h3>
-                    <img src="http://i.imgur.com/wfY99m0.png">
+                    <img src="img/button-led-hardware.png">
                 </section>
 
                 <section>
@@ -754,7 +769,7 @@ board.on("ready", function() {
 
                     <section>
                         <p>Potential Light Switch Solution - Hardware</p>
-                        <img src="http://i.imgur.com/wfY99m0.png">
+                        <img src="img/light-switch-hardware.png">
                     </section>
 
                     <section>
@@ -788,7 +803,7 @@ board.on("ready", function() {
 
                     <section>
                         <p>Potential Passcode Solution - Hardware</p>
-                        <img src="http://i.imgur.com/EdV4s19.png">
+                        <img src="img/passcode-hardware.png">
                     </section>
 
                     <section>
@@ -851,18 +866,18 @@ board.on("ready", function() {
                 </section>
 
                 <section>
-                    <h3>Servos</h3>
-                    <img src="http://www.seeedstudio.com/depot/images/product/GroveServo.jpg">
+                    <h3><span class="spin">S</span><span class="spin">e</span><span class="spin">r</span><span class="spin">v</span><span class="spin">o</span><span class="spin">s</span></h3>
+                    <img src="img/servo.jpg">
                 </section>
 
                 <section>
                     <p>Take your servo and add one of the attachments to it</p>
-                    <img src="http://www.seeedstudio.com/depot/images/product/GroveServo.jpg">
+                    <img src="img/servo.jpg">
                 </section>
 
                 <section>
                     <h3>Build This</h3>
-                    <img src="http://i.imgur.com/Yg1y4nL.png" style="max-height: 75%; max-width: 75%;">
+                    <img src="img/servo-hardware.png" style="max-height: 75%; max-width: 75%;">
                 </section>
 
                 <section>
@@ -896,6 +911,8 @@ board.on("ready", function() {
 
 > servo.max();
 
+> servo.range;
+
 > servo.center();
 
 > servo.sweep();
@@ -921,18 +938,92 @@ board.on("ready", function() {
                         <p>Press &darr; to scroll through the following challenges (and potential solutions)</p>
 
                         <ol style="white-space: nowrap;">
+                            <li>Sprinkler</li>
+                            <li>Arrows</li>
                             <li>Button</li>
                         </ol>
                     </section>
 
                     <section>
-                        <h3>1. Button</h3>
+                        <h3>1. Sprinkler</h3>
+                        <p>Make the servo rotate back and forth like a sprinkler</p>
+                        <img src="img/sprinkler.gif">
+                    </section>
+
+                    <section>
+                        <p>Potential Sprinkler Solution - Hardware</p>
+                        <img src="img/sprinkler-hardware.png" style="max-height: 75%; max-width: 75%;">
+                    </section>
+
+                    <section>
+                        <p>Potential Sprinkler Solution - Code</p>
+                        <pre><code class="hljs" data-trim style="max-height: none;">
+var five = require("johnny-five");
+var board = new five.Board();
+
+board.on("ready", function() {
+
+  var servo = new five.Servo(11);
+  var min = servo.range[0];
+  var max = servo.range[1];
+  var value = min;
+
+  function step() {
+    servo.to(value);
+    value = (value + 45) % max;
+    setTimeout(step, 500);
+  }
+
+  step();
+});
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>2. Arrows</h3>
+                        <p>Make pressing the left arrow button rotate the servo one way and pressing the right arrow button rotate the other way</p>
+                        <img src="img/servo-arrows.gif">
+                    </section>
+
+                    <section>
+                        <p>Potential Arrows Solution - Hardware</p>
+                        <img src="img/servo-arrows-hardware.png" style="max-height: 75%; max-width: 75%;">
+                    </section>
+
+                    <section>
+                        <p>Potential Arrows Solution - Code</p>
+                        <pre><code class="hljs" data-trim style="max-height: none;">
+var five = require("johnny-five");
+var keypress = require("keypress");
+var board = new five.Board();
+
+board.on("ready", function() {
+
+  var servo = new five.Servo(11);
+
+  process.stdin.on("keypress", function(ch, key) {
+    if (key && key.name === "left") {
+      servo.min();
+    } else if (key && key.name === "right") {
+      servo.max();
+    }
+  });
+
+  process.stdin.setRawMode(true);
+  process.stdin.resume();
+});
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>3. Button</h3>
                         <p>Have the servo sweep while a button is held down</p>
+                        <img src="img/servo-sweep.gif">
                     </section>
 
                     <section>
                         <p>Potential Button Solution - Hardware</p>
-                        <img src="http://i.imgur.com/HP85BUO.png">
+                        <img src="img/servo-sweep-hardware.png">
                     </section>
 
                     <section>
@@ -965,6 +1056,7 @@ board.on("ready", function() {
                     <h3>Wrapping Up</h3>
                     <ul>
                         <li>Thank you for coming!</li>
+                        <li>We'd love your feedback: <a href="http://bit.ly/nodebots-feedback" target="_blank">bit.ly/nodebots-feedback</a></li>
                         <li>Please put away kits (you can buy your own <a href="http://www.seeedstudio.com/depot/ARDX-The-starter-kit-for-Arduino-p-1153.html" target="_blank">here</a>)</li>
                     </ul>
                 </section>
